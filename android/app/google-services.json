@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "164237100627",
+    "project_id": "bill-splitter-3454b",
+    "storage_bucket": "bill-splitter-3454b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164237100627:android:9114f1c3b9b5017747e8a6",
+        "android_client_info": {
+          "package_name": "com.example.splitbills"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "164237100627-vfo5tvlmsj3d0o3r8ssp8uo2jprll8nc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAaJMc0HvdxwdE0bFcB7K6zJbMGyU5nlI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "164237100627-vfo5tvlmsj3d0o3r8ssp8uo2jprll8nc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
