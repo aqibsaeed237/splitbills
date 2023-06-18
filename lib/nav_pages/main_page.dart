@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:splitbills/nav_pages/account_page.dart';
 import 'package:splitbills/nav_pages/activity_page.dart';
 import 'package:splitbills/nav_pages/friends_page.dart';
-
-import 'main_group_page.dart';
+import 'package:splitbills/nav_pages/main_group_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -13,37 +12,29 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  List<Widget> pages = [
-    MainScreen(),
+  int _selectedIndex = 0;
+  final screens = [
+    MainGroupPage(),
     FriendsPage(),
     ActivityPage(),
     AccountPage(),
   ];
 
-  int currentIndex = 0;
-
-  void onTap(int index) {
+  void _onItemTapped(int index) {
     setState(() {
-      currentIndex = index;
+      _selectedIndex = index;
     });
-
-    if (index != 0) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => pages[index]),
-      );
-    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[currentIndex],
+      body: screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
-        onTap: onTap,
-        currentIndex: currentIndex,
+        onTap: _onItemTapped,
+        currentIndex: _selectedIndex,
         selectedItemColor: Colors.teal,
         unselectedItemColor: Colors.grey,
         elevation: 0,

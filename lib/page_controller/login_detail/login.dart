@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:splitbills/controller/login_detail/login_controller.dart';
-import 'package:splitbills/home/home_screen.dart';
+import 'package:splitbills/nav_pages/main_page.dart';
+import 'package:splitbills/page_controller/forget_detail/forget.dart';
 
-import 'forget.dart';
+import 'login_controller.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -97,7 +97,7 @@ class _LoginPageState extends State<LoginScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const HomeScreen()));
+                            builder: (context) => const MainPage()));
                   },
                   child: Container(
                     height: 45,

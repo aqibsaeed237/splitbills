@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:splitbills/nav_pages/nav_controller_helper_pages/add_expense_page.dart';
+import 'package:splitbills/nav_pages/nav_controller_helper_pages/create_group_pages.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+class MainGroupPage extends StatefulWidget {
+  const MainGroupPage({Key? key}) : super(key: key);
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<MainGroupPage> createState() => _MainGroupPageState();
 }
 
-class _MainScreenState extends State<MainScreen> {
-  int _selectedIndex = 0;
-
+class _MainGroupPageState extends State<MainGroupPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,32 +18,22 @@ class _MainScreenState extends State<MainScreen> {
         primarySwatch: Colors.teal,
       ),
       home: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(56),
-          child: Container(
-            color: Colors.white,
-            child: Column(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: const Padding(
+            padding: EdgeInsets.all(12.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                AppBar(
-                  backgroundColor: Colors.transparent,
-                  elevation: 0,
-                  title: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: const [
-                        Icon(
-                          Icons.search,
-                          color: Colors.black,
-                        ),
-                        SizedBox(width: 12),
-                        Icon(
-                          Icons.group,
-                          color: Colors.black,
-                        ),
-                      ],
-                    ),
-                  ),
+                Icon(
+                  Icons.search,
+                  color: Colors.black,
+                ),
+                SizedBox(width: 14),
+                Icon(
+                  Icons.group,
+                  color: Colors.black,
                 ),
               ],
             ),
@@ -54,6 +44,7 @@ class _MainScreenState extends State<MainScreen> {
             const SizedBox(
               height: 14,
             ),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -115,32 +106,40 @@ class _MainScreenState extends State<MainScreen> {
             ),
             const SizedBox(height: 30),
             SizedBox(
-              child: Container(
-                height: 40,
-                width: 200,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.teal, // Border color
-                    width: 1.0, // Border width
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CreateGroupPage()));
+                },
+                child: Container(
+                  height: 40,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.teal, // Border color
+                      width: 1.0, // Border width
+                    ),
+                    borderRadius: BorderRadius.circular(4.0), // Rounded corners
                   ),
-                  borderRadius: BorderRadius.circular(4.0), // Rounded corners
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Icon(
-                      Icons.group,
-                      color: Colors.teal, // Icon color
-                    ),
-                    SizedBox(width: 8),
-                    Text(
-                      'Start a new group',
-                      style: TextStyle(
-                        color: Colors.teal, // Text color
-                        fontSize: 16,
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.group,
+                        color: Colors.teal, // Icon color
                       ),
-                    ),
-                  ],
+                      SizedBox(width: 8),
+                      Text(
+                        'Start a new group',
+                        style: TextStyle(
+                          color: Colors.teal, // Text color
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -148,82 +147,21 @@ class _MainScreenState extends State<MainScreen> {
             const SizedBox(
               height: 80,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 18.0),
-                  child: Container(
-                    height: 45,
-                    width: 160,
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                    decoration: BoxDecoration(
-                      color: Colors.teal,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Row(
-                      children: const [
-                        Icon(
-                          Icons.add,
-                          color: Colors.white, // Icon color
-                        ),
-                        SizedBox(width: 12),
-                        Text(
-                          'Add Expense',
-                          style: TextStyle(color: Colors.white, fontSize: 18),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
           ]),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _selectedIndex,
-          onTap: (int index) {
-            setState(() {
-              _selectedIndex = index;
-            });
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => AddExpense()));
           },
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.group,
-                color: _selectedIndex == 0 ? Colors.teal : Colors.grey,
-              ),
-              label: 'Activity',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person,
-                color: _selectedIndex == 1 ? Colors.teal : Colors.grey,
-              ),
-              label: 'Friends',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.history,
-                color: _selectedIndex == 2 ? Colors.teal : Colors.grey,
-              ),
-              label: 'Activity',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.account_circle,
-                color: _selectedIndex == 3 ? Colors.teal : Colors.grey,
-              ),
-              label: 'Account',
-            ),
-          ],
+          label: const Text("Add expense"),
+          icon: const Icon(
+            Icons.add,
+            color: Colors.white, // Icon color
+          ),
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       ),
     );
   }
-}
-
-void main() {
-  runApp(const MainScreen());
 }

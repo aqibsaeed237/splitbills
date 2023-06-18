@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import '../../home/home_screen.dart';
+import 'package:splitbills/main.dart';
 
 class LoginController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -20,7 +20,7 @@ class LoginController extends GetxController {
         Get.offAll(const HomeScreen());
       } else {
         // Handle case when user is null
-        print('Authentication failed: User is null');
+        // print('Authentication failed: User is null');
         Fluttertoast.showToast(
           msg: 'An error occurred!',
           toastLength: Toast.LENGTH_SHORT,
@@ -29,7 +29,7 @@ class LoginController extends GetxController {
       }
     } catch (e) {
       // Handle login errors
-      print('Login failed: $e');
+      //print('Login failed: $e');
       Fluttertoast.showToast(
         msg: 'Login failed: $e!',
         toastLength: Toast.LENGTH_SHORT,

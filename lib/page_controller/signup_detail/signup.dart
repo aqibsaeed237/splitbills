@@ -5,9 +5,7 @@ import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:splitbills/home/home_screen.dart';
-
-import 'controller/signup_detail/signup_controller.dart';
+import 'package:splitbills/nav_pages/main_page.dart';
 
 class ImagePickerController extends GetxController {
   final picker = ImagePicker();
@@ -323,7 +321,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     const SizedBox(width: 30),
                     InkWell(
                       onTap: () {
-                        SignUpController();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MainPage()));
+                        // SignUpController();
                       },
                       child: Container(
                         width: 100,

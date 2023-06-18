@@ -32,8 +32,12 @@ dependencies:
     sdk: flutter
   country_picker: ^2.0.20
   currency_picker: ^2.0.16
+  cloud_firestore: ^4.8.1
+  fluttertoast: ^8.2.2
+  firebase_auth: ^4.6.3
+  get: ^4.6.5
+  image_picker: ^0.8.9
 
-  cloud_firestore: ^4.7.0
 
 
 
